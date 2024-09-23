@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import profilImage from '@/assets/img/profile.png'
+import { useRouter } from 'next/navigation'; 
 import Image from 'next/image';
 import Link from 'next/link';
 import retourImage from '@/assets/img/closse_icon.png'

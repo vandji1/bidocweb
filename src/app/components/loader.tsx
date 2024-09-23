@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef  } from 'react'
-import React from 'react'
+ import React from 'react'
 import { ClipLoader } from 'react-spinners';
 
 export default function Loader() {

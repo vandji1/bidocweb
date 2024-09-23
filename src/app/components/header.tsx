@@ -4,7 +4,7 @@ import React from 'react';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faLayerGroup, faUser, faEllipsis } from '@fortawesome/free-solid-svg-icons';
-import { useRouter, usePathname, useSearchParams  } from 'next/navigation';
+import { usePathname  } from 'next/navigation';
 
 export default function Header() {
     const pathname = usePathname();

@@ -1,17 +1,14 @@
 'use client'
 
-import { useEffect, useState } from 'react';
-import Image from "next/image";
-import { Html, Head, Main, NextScript } from 'next/document';
+import {useState } from 'react';
+import Image from "next/image"; 
 import cvImage from "@/assets/img/cover.png"
 import lettreImage from "@/assets/img/motivation.png"
 import factureImage from "@/assets/img/factu.png"
-import Legale from "./components/legale/page";
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import Legale from "./components/legale/page"; 
 import Link from 'next/link';
 import Loader from './components/loader';
-export default function Home() {
-  const router = useRouter();
+export default function Home() { 
   const [loading, setLoading] = useState(false); // Loader state
 
   const handleClick = async () => {

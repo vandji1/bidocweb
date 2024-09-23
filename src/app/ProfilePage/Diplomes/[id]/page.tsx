@@ -103,7 +103,7 @@ export default function EditDiploma({ params }: { params: { id: string } }) {
           />
         </div>
         <div className='text-left mb-4 flex flex-col'>
-          <label>Date d'obtention :</label>
+          <label>Date d&#39;obtention :</label>
           <input
             type="date"
             value={dateObtention}

@@ -4,11 +4,11 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faBagShopping, faCertificate, faLanguage, faKey, faEllipsis, faFilm, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faBagShopping, faCertificate, faLanguage, faKey, faFilm, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import profil from '@/assets/img/profile.png'
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import { ClipLoader } from 'react-spinners';
+import { useRouter } from 'next/navigation'; 
 import Loader from '../components/loader';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
 interface Person {
   id: number;
@@ -18,7 +18,7 @@ interface Person {
   link: string;
 }
 
-const iconMapping: { [key: string]: any } = {
+const iconMapping: { [key: string]: IconDefinition } = {
   person: faUser,
   bag: faBagShopping,
   certificate: faCertificate,
@@ -34,10 +34,8 @@ export default function Profile() {
     surname: 'Prénom',
     skills: 'Quel travail vous avez besoin ?',
   });
-  const [data, setData] = useState<Person[]>([]);
-  const [subscriptionStatus, setSubscriptionStatus] = useState('inactive');
-
-  const router = useRouter();
+  const [data, setData] = useState<Person[]>([]); 
+ 
   const [loading, setLoading] = useState(false); // Loader state 
 
   const handleClick = async () => {
@@ -64,12 +62,7 @@ export default function Profile() {
         setPersonalInfo(JSON.parse(storedInfo));
         setLoading(false)
       }
-
-      // Charger le statut d'abonnement depuis localStorage
-      const storedStatus = localStorage.getItem('subscriptionStatus');
-      if (storedStatus) {
-        setSubscriptionStatus(storedStatus);
-      }
+ 
     };
 
     loadData();
@@ -120,7 +113,4 @@ export default function Profile() {
       )}
     </div>
   );
-}
-
-const styles = {
-};
+} 

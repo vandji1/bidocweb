@@ -1,5 +1,4 @@
-'use client';
-
+"use client"
 import React, { useState, useEffect } from 'react'; 
 import { useRouter } from 'next/navigation';
 import jsPDF from 'jspdf'; 
@@ -27,13 +26,26 @@ const Motivation = () => {
   const formattedDate = currentDate.toISOString().split('T')[0]; // 'YYYY-MM-DD' format
 
   // Load user data from local storage
-  const loadUserData = (): PersonalInfo => {
-    const userData = localStorage.getItem('userData');
-    return userData ? JSON.parse(userData) : {}; 
+  const loadUserData = (): Partial<PersonalInfo> => {
+    if (typeof window !== 'undefined') {
+      const userData = localStorage.getItem('userData');
+      return userData ? JSON.parse(userData) : {}; 
+    }
+    return {}; // Retourne un objet vide si on est côté serveur
   };
 
-  const personalInfo = loadUserData();
+  const [personalInfo, setPersonalInfo] = useState<Partial<PersonalInfo>>(loadUserData());
   
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedCredits = localStorage.getItem('credits');
+      if (storedCredits) {
+        setCredits(JSON.parse(storedCredits));
+      }
+      setPersonalInfo(loadUserData()); // Met à jour les informations personnelles
+    }
+  }, []);
+
   const generateMotivationLetter = async () => { 
     if (!jobTitle || !employerName || !entrepriseAdress) {
       alert('Veuillez remplir tous les champs.');
@@ -51,7 +63,7 @@ const Motivation = () => {
       const response = await fetch('https://api.edenai.run/v2/text/chat', {
         method: 'POST',
         headers: {
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMzRlZGNkMDktZTlmMC00YTU4LTgxMTMtMTAwNTRiMzI0NzBlIiwidHlwZSI6ImFwaV90b2tlbiJ9.NdENh6YugGNm2IS7PyPgn0AyOMB5PHX1i8KriKUMyn0', // Remplacez par votre clé API Edenai
+          'Authorization': 'Bearer YOUR_API_KEY', // Remplacez par votre clé API Edenai
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -72,7 +84,9 @@ const Motivation = () => {
         setGeneratedLetter(data["openai/gpt-3.5-turbo"].generated_text);
         
         setCredits(prev => prev - 1);
-        localStorage.setItem('credits', JSON.stringify(credits - 1));
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('credits', JSON.stringify(credits - 1));
+        }
         
       } else {
         alert('La génération de la lettre a échoué. Veuillez réessayer.');
@@ -89,21 +103,12 @@ const Motivation = () => {
     const doc = new jsPDF();
     doc.setFontSize(12);
     
-    // Ajustez la largeur selon vos besoins
     const pageWidth = doc.internal.pageSize.getWidth() - 40; // 10 unités de marge de chaque côté
     const textLines = doc.splitTextToSize(generatedLetter, pageWidth);
 
     doc.text(textLines, 10, 10); // Position du texte
     doc.save('lettre_de_motivation.pdf'); // Nom du fichier PDF
-};
-
-
-  useEffect(() => { 
-    const storedCredits = localStorage.getItem('credits');
-    if (storedCredits) {
-      setCredits(JSON.parse(storedCredits));
-    }
-  }, []);
+  };
 
   return (
     <div className='text-neutral p-4 mt-10'>
@@ -134,7 +139,7 @@ const Motivation = () => {
       {loading && <p>Chargement...</p>}
       {generatedLetter && (
         <div 
-          className='mt-4 '
+          className='mt-4'
           dangerouslySetInnerHTML={{ __html: generatedLetter.replace(/\n/g, '<br />') }}
         />
       )}

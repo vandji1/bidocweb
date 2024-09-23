@@ -63,7 +63,7 @@ const Motivation = () => {
       const response = await fetch('https://api.edenai.run/v2/text/chat', {
         method: 'POST',
         headers: {
-          'Authorization': 'Bearer YOUR_API_KEY', // Remplacez par votre clé API Edenai
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMzRlZGNkMDktZTlmMC00YTU4LTgxMTMtMTAwNTRiMzI0NzBlIiwidHlwZSI6ImFwaV90b2tlbiJ9.NdENh6YugGNm2IS7PyPgn0AyOMB5PHX1i8KriKUMyn0', // Remplacez par votre clé API Edenai
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({

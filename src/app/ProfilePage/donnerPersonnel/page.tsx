@@ -76,11 +76,11 @@ const ProfilePage = () => {
     };
 
     return (
-        <div className="container p-2 mb-40 bg-base-100 md:mt-4 ">
+        <div className="container p-4 mb-40 bg-base-100 md:mt-4 ">
             <Link href={'/ProfilePage'}>
                 <Image className='w-8 mb-10' src={retourImage} alt='retour' />
             </Link>
-            <h1 className="text-2xl font-bold mb-4 text-neutral">Données personnelles</h1>
+            <h1 className="text-2xl font-bold mb-4 text-neutral text-center">Données personnelles</h1>
             <div className='flex flex-row gap-2'>
                 <div className="mb-4">
                     <label className="block text-xs text-neutral">Nom:</label>

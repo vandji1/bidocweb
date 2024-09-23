@@ -60,7 +60,7 @@ export default function EditLoisir({ params }: { params: { id: string } }) {
   };
 
   return (
-    <div className='text-neutral p-10 text-center'>
+    <div className='text-neutral p-10 text-center mb-40'>
       <Link href={'/ProfilePage/Loisirs'}>
         <Image className='w-8 mb-10' src={retourImage} alt='retour' />
       </Link>
@@ -85,7 +85,7 @@ export default function EditLoisir({ params }: { params: { id: string } }) {
           />
         </div>
         
-        <button className='bg-primary rounded-lg p-4 w-full' type="submit">{id === 'new' ? "Ajouter le loisir" : "Sauvegarder les modifications"}</button>
+        <button className='bg-primary rounded-lg p-2 w-full' type="submit">{id === 'new' ? "Ajouter le loisir" : "Sauvegarder les modifications"}</button>
       </form>
     </div>
   );

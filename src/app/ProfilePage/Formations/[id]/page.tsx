@@ -72,7 +72,7 @@ export default function EditFormation({ params }: { params: { id: string } }) {
   };
 
   return (
-    <div className='text-neutral p-10 text-center'>
+    <div className='text-neutral p-2 text-center mb-40'>
       <Link href={'/ProfilePage/Formations'}>
         <Image className='w-8 mb-10' src={retourImage} alt='retour' />
       </Link>
@@ -127,7 +127,7 @@ export default function EditFormation({ params }: { params: { id: string } }) {
           />
         </div>
 
-        <button className='bg-primary rounded-lg p-4 w-full' type="submit">{id === 'new' ? "Ajouter la formation" : "Sauvegarder les modifications"}</button>
+        <button className='bg-primary rounded-lg p-2 w-full' type="submit">{id === 'new' ? "Ajouter la formation" : "Sauvegarder les modifications"}</button>
       </form>
     </div>
   );

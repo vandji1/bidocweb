@@ -71,7 +71,7 @@ const Languages: React.FC = () => {
   );
 
   return (
-    <div className='p-10 text-center mb-20'> 
+    <div className='p-2 text-center mb-40'> 
       <Link href={'/ProfilePage'}>
         <Image className='w-8 mb-10' src={retourImage} alt='retour'/>
       </Link>
@@ -81,7 +81,7 @@ const Languages: React.FC = () => {
       ) : (
         languages.map(renderLanguage)
       )}
-      <button onClick={() => router.push('Langues/new')} className='text-neutral bg-primary p-4 rounded-lg mt-10 w-full'>
+      <button onClick={() => router.push('Langues/new')} className='text-neutral bg-primary p-2 rounded-lg mt-10 w-full'>
         <FontAwesomeIcon icon={faAdd} size="lg" className='text-neutral' /> Ajouter une nouvelle langue
       </button>
     </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation'; 
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import retourImage from '@/assets/img/closse_icon.png'
@@ -76,33 +76,33 @@ const ProfilePage = () => {
     };
 
     return (
-        <div className="container p-10 mb-40 bg-base-100 md:mt-4">
+        <div className="container p-2 mb-40 bg-base-100 md:mt-4 ">
             <Link href={'/ProfilePage'}>
-        <Image className='w-8 mb-10' src={retourImage} alt='retour'/>
-      </Link>
+                <Image className='w-8 mb-10' src={retourImage} alt='retour' />
+            </Link>
             <h1 className="text-2xl font-bold mb-4 text-neutral">Données personnelles</h1>
             <div className='flex flex-row gap-2'>
                 <div className="mb-4">
                     <label className="block text-xs text-neutral">Nom:</label>
                     <input type="text" value={name} onChange={(e) => setName(e.target.value)}
-                        className="border-b-2 bg-transparent mb-4 mt-2 w-full text-neutral font-normal" />
+                        className="w-full p-2 border border-gray-300 rounded-md text-neutral" />
                 </div>
                 <div className="mb-4">
                     <label className="block text-xs  text-neutral">Prénom:</label>
                     <input type="text" value={surname} onChange={(e) => setSurname(e.target.value)}
-                        className="border-b-2 bg-transparent mb-4   mt-2 w-full text-neutral font-normal" />
+                        className="w-full p-2 border border-gray-300 rounded-md text-neutral" />
                 </div>
             </div>
             <div className='flex flex-row gap-2'>
                 <div className="mb-4">
                     <label className="block text-xs text-neutral">Téléphone:</label>
                     <input type="tel" value={tel} onChange={(e) => setTel(e.target.value)}
-                        className="border-b-2 bg-transparent mb-4  mt-2 w-full text-neutral font-normal" />
+                        className="w-full p-2 border border-gray-300 rounded-md text-neutral" />
                 </div>
                 <div className="mb-4">
                     <label className="block text-xs text-neutral">Email:</label>
                     <input type="email" value={mail} onChange={(e) => setMail(e.target.value)}
-                        className="border-b-2 bg-transparent mb-4  mt-2 w-full text-neutral font-normal" />
+                        className="w-full p-2 border border-gray-300 rounded-md text-neutral" />
                 </div>
             </div>
 
@@ -110,12 +110,12 @@ const ProfilePage = () => {
                 <div className="mb-4 flex-1">
                     <label className="block text-xs  text-neutral">Adresse:</label>
                     <input type="text" value={adresse} onChange={(e) => setAdresse(e.target.value)}
-                        className="border-b-2 bg-transparent mb-4  mt-2 w-full text-neutral font-normal" />
+                        className="w-full p-2 border border-gray-300 rounded-md text-neutral" />
                 </div>
                 <div className="mb-4  w-12">
                     <label className="block text-xs  text-neutral">Âge:</label>
                     <input type="number" value={age} onChange={(e) => setAge(e.target.value)}
-                        className="border-b-2 bg-transparent mb-4  mt-2 w-full text-neutral font-normal" />
+                        className="w-full p-2 border border-gray-300 rounded-md text-neutral" />
                 </div>
             </div>
 
@@ -123,16 +123,16 @@ const ProfilePage = () => {
             <div className="mb-4">
                 <label className="block text-xs text-neutral">Que voulez-vous faire comme travail ?</label>
                 <input type="text" value={skills} onChange={(e) => setSkills(e.target.value)}
-                    className="border-b-2 bg-transparent  mt-2 w-full text-neutral font-normal" />
+                    className="w-full p-2 border border-gray-300 rounded-md text-neutral" />
             </div>
             <div className=' flex flex-col justify-center items-center'>
-            <button onClick={pickImage} className="bg-base-100 text-neutral p-2 rounded  ">Choisir votre photo</button>
-            {profileImage && (
-                <div className="mt-4">
-                    <Image src={profileImage} alt="Image de profil" className="w-24 h-24 rounded-full" width={96} height={96} />
-                </div>
-            )}
-            <button onClick={handleSave} className="bg-primary text-neutral p-2 rounded mt-4 text-lg font-bold px-10 w-full">Enregistrer</button>
+                <button onClick={pickImage} className="bg-base-100 text-neutral p-2 rounded  ">Choisir votre photo</button>
+                {profileImage && (
+                    <div className="mt-4">
+                        <Image src={profileImage} alt="Image de profil" className="w-24 h-24 rounded-full" width={96} height={96} />
+                    </div>
+                )}
+                <button onClick={handleSave} className="bg-primary text-neutral p-2 rounded mt-4 text-lg font-bold px-10 w-full">Enregistrer</button>
             </div>
         </div>
     );

@@ -43,7 +43,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="bg-neutral max-w-96 p-8 rounded-2xl mb-28 shadow-2xl">
+        <div className="bg-neutral-800 max-w-96 p-8 rounded-2xl mb-28 shadow-2xl">
           <div className="text-center">
             <h1 className="text-2xl font-black text-center my-4 text-base-100">Créer une facture pro</h1>
             <h2 className="text-x font-normal text-center my-4 text-base-100">Votre facture pro en quelques secondes.</h2>
@@ -61,7 +61,7 @@ export default function Home() {
 
 
 
-        <div className="bg-secondary max-w-96 p-8 rounded-2xl mb-28 shadow-2xl">
+        <div className="bg-base-100 max-w-96 p-8 rounded-2xl mb-28 shadow-2xl">
           <div className="text-center">
             <h1 className="text-2xl font-black text-center my-4">Lettre de motivation e un Clic !</h1>
             <h2 className="text-x font-normal text-center my-4 ">Laissez-nous vous aider à créer une lettre convaincante e quelques secondes.</h2>

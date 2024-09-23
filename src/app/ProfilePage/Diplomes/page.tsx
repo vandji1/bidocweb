@@ -75,7 +75,7 @@ const Diplomas: React.FC = () => {
   );
 
   return (
-    <div className='p-10 text-center mb-20'> 
+    <div className='p-2 text-center mb-40'> 
       <Link href={'/ProfilePage'}>
         <Image className='w-8 mb-10' src={retourImage} alt='retour'/>
       </Link>

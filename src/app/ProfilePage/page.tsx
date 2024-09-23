@@ -70,12 +70,12 @@ export default function Profile() {
   const renderIcon = (iconName: string) => {
     const iconKey = iconName.split('-')[0]; // On extrait la partie avant le tiret
     return iconMapping[iconKey] ? (
-      <FontAwesomeIcon icon={iconMapping[iconKey]} size="lg" className='text-neutral' />
+      <FontAwesomeIcon icon={iconMapping[iconKey]} size="xs" className='text-neutral' />
     ) : null;
   };
 
   return (
-    <div style={{ padding: '15px' }}>
+    <div style={{ padding: '15px' }} className='mb-40'>
       <div className='flex justify-left items-center gap-4 bg-base-100 rounded-lg p-4'>
         <Image
           src={personalInfo.profileImage || profil}
@@ -102,9 +102,9 @@ export default function Profile() {
               <div className='flex flex-row justify-between p-4 border-b-2 my-4'>
                 <div className='flex justify-center'>
                   {renderIcon(item.iconNom)}
-                  <span className='mx-4 font-bold text-lg text-neutral'>{item.nom}</span>
+                  <span className='mx-4 font-bold text-xs text-neutral'>{item.nom}</span>
                 </div>
-                <FontAwesomeIcon icon={faChevronRight} size="lg" />
+                <FontAwesomeIcon icon={faChevronRight} size="xs" />
               </div>
             </Link>
           ))}

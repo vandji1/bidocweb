@@ -9,11 +9,11 @@ const Politique = () => {
             </p>
             <h2 className="font-bold text-2xl mt-4 mb-2">Informations collectées</h2>
             <p className="mb-4 text-gray-700">
-                Nous collectons vos informations telles que votre nom, adresse email, et informations de paiement uniquement lorsque vous vous inscrivez et effectuez des transactions sur l"application.
+                Nous collectons vos informations telles que votre nom, adresse email, et informations de paiement uniquement lorsque vous vous inscrivez et effectuez des transactions sur l&apos;application.
             </p>
             <h2 className="font-bold text-2xl mt-4 mb-2">Utilisation des informations</h2>
             <p className="mb-4 text-gray-700">
-                Les informations collectées sont utilisées pour vous fournir les fonctionnalités de l"application telles que la génération de CV et lettres de motivation, la gestion des crédits, et le traitement des paiements.
+                Les informations collectées sont utilisées pour vous fournir les fonctionnalités de l&apos;application telles que la génération de CV et lettres de motivation, la gestion des crédits, et le traitement des paiements.
             </p>
             <h2 className="font-bold text-2xl mt-4 mb-2">Partage des informations</h2>
             <p className="mb-4 text-gray-700">

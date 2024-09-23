@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Header from "./components/header";
-import Footer from "./components/footer";
+import Header from "./components/header"; 
 import { Inter } from "next/font/google";
 import "./globals.css"; 
 import { config } from '@fortawesome/fontawesome-svg-core'
@@ -24,8 +23,7 @@ export default function RootLayout({
     <html lang="fr"> 
       <body className={inter.className}>
         <Header />
-        {children}
-        <Footer />
+        {children} 
       </body>
 
     </html>

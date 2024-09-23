@@ -129,7 +129,7 @@ const ProfilePage = () => {
             <button onClick={pickImage} className="bg-base-100 text-neutral p-2 rounded  ">Choisir votre photo</button>
             {profileImage && (
                 <div className="mt-4">
-                    <img src={profileImage} alt="Image de profil" className="w-24 h-24 rounded-full" />
+                    <Image src={profileImage} alt="Image de profil" className="w-24 h-24 rounded-full" width={96} height={96} />
                 </div>
             )}
             <button onClick={handleSave} className="bg-primary text-neutral p-2 rounded mt-4 text-lg font-bold px-10 w-full">Enregistrer</button>

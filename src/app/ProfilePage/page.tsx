@@ -5,8 +5,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faBagShopping, faCertificate, faLanguage, faKey, faFilm, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import profil from '@/assets/img/profile.png'
-import { useRouter } from 'next/navigation'; 
+import profil from '@/assets/img/profile.png' 
 import Loader from '../components/loader';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 

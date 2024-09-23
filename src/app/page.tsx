@@ -1,101 +1,89 @@
+'use client'
+
+import { useEffect, useState } from 'react';
 import Image from "next/image";
-
+import { Html, Head, Main, NextScript } from 'next/document';
+import cvImage from "@/assets/img/cover.png"
+import lettreImage from "@/assets/img/motivation.png"
+import factureImage from "@/assets/img/factu.png"
+import Legale from "./components/legale/page";
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import Link from 'next/link';
+import Loader from './components/loader';
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const router = useRouter();
+  const [loading, setLoading] = useState(false); // Loader state
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const handleClick = async () => {
+    try {
+      setLoading(true); // Active le loader  
+    } catch (error) {
+      console.error('Erreur lors de la navigation:', error);
+      setLoading(false); // Désactiver le loader même en cas d'erreur
+    }
+  };
+
+  return (
+    <>
+      {loading ? (
+        <Loader />
+      ) : null}
+
+      <div className="text-black m-4 md:flex md:flex-row gap-4 justify-center">
+
+        <div className="bg-base-100 max-w-96 p-8 rounded-2xl mb-28 shadow-2xl">
+          <div className="text-center">
+            <h1 className="text-2xl font-black text-center my-4">Votre CV sur-mesure, en un rien d temps</h1>
+            <h2 className="text-x font-normal text-center my-4 ">En seulement 5 secondes, obtenez un CV personalisé en remplissant votre  profil.</h2>
+          </div>
+          <Link href='/ProfilePage'>
+            <div className="font-black bg-primary text-center p-2 rounded-xl text-neutral">Remplir  mon profile CV</div>
+          </Link>
+          <Image
+            src={cvImage} // Assurez-vous d'utiliser un chemin absolu
+            alt="Image de couverture"
+            className="w-full rounded-lg my-4"
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+
+        <div className="bg-neutral max-w-96 p-8 rounded-2xl mb-28 shadow-2xl">
+          <div className="text-center">
+            <h1 className="text-2xl font-black text-center my-4 text-base-100">Créer une facture pro</h1>
+            <h2 className="text-x font-normal text-center my-4 text-base-100">Votre facture pro en quelques secondes.</h2>
+          </div>
+          <Link href='/ProfilePage' onClick={() => handleClick()} >
+            <div className="font-black bg-primary text-center p-2 rounded-xl text-neutral">Créer une facture de vente</div>
+          </Link>
           <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            src={factureImage} // Assurez-vous d'utiliser un chemin absolu
+            alt="Image de facture"
+            className="w-full rounded-lg my-4"
+            priority
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        </div>
+
+
+
+        <div className="bg-secondary max-w-96 p-8 rounded-2xl mb-28 shadow-2xl">
+          <div className="text-center">
+            <h1 className="text-2xl font-black text-center my-4">Lettre de motivation e un Clic !</h1>
+            <h2 className="text-x font-normal text-center my-4 ">Laissez-nous vous aider à créer une lettre convaincante e quelques secondes.</h2>
+          </div>
+          <Link href='/MotivationPage'>
+            <div className="font-black bg-primary text-center p-2 rounded-xl text-neutral">Générer une lettre de motivation</div>
+          </Link>
           <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+            src={lettreImage} // Assurez-vous d'utiliser un chemin absolu
+            alt="Image de couverture"
+            className="w-full rounded-lg my-4"
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        </div>
+
+      </div>
+      <div className="mt-10 mb-40">
+        <Legale />
+      </div>
+
+    </>
   );
 }

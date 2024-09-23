@@ -1,0 +1,47 @@
+[
+    {
+      "id": 1,
+      "nom": "Données personnelles",
+      "icon":"Ionicons",
+      "iconNom": "person-outline",
+      "link": "donnerPersonnel"
+    }, 
+    {
+        "id": 3,
+        "nom": "Expériences",
+        "icon":"Ionicons",
+        "iconNom": "bag-outline",
+        "link": "Experiences"
+    }, 
+    {
+        "id": 6,
+        "nom": "Diplôme",
+        "icon":"MaterialCommunityIcons",
+        "iconNom": "certificate-outline",
+        "link": "Diplomes"
+    },
+    {
+        "id": 5,
+        "nom": "Langue",
+        "icon":"Ionicons",
+        "iconNom": "language-outline",
+        "link": "Langues"
+    },
+    
+    {
+        "id": 7,
+        "nom": "Formation",
+        "icon":"Ionicons",
+        "iconNom": "key-outline",
+        "link": "Formations"
+    }, 
+    {
+        "id": 9,
+        "nom": "Passes Temps /Loisirs",
+        "icon":"Ionicons",
+        "iconNom": "film-outline",
+        "link": "Loisirs"
+    }
+    
+  ]
+  

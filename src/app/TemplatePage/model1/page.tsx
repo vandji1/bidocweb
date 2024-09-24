@@ -1,4 +1,4 @@
-"use client"; // Assurez-vous que ce code s'exécute côté client
+'use client';  
 
 import { Page, Text, View, Document, StyleSheet, PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
 
@@ -71,14 +71,7 @@ export default function MyApp() {
             {/* Lien pour télécharger le PDF */}
             <PDFDownloadLink
                 document={<MyDocument />}
-                fileName="mon_cv.pdf"
-                style={{
-                    textDecoration: 'none',
-                    padding: '10px',
-                    color: '#fff',
-                    backgroundColor: '#007bff',
-                    borderRadius: '5px',
-                }}
+                fileName="mon_cv.pdf" 
             >
                 <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">
                     Télécharger le PDF

@@ -67,16 +67,7 @@ export default function MyApp() {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen py-8 bg-gray-100 text-neutral">
             <h1 className="text-2xl font-bold mb-4 text-center">Générer un PDF avec React</h1>
-
-            {/* Lien pour télécharger le PDF */}
-            <PDFDownloadLink
-                document={<MyDocument />}
-                fileName="mon_cv.pdf" 
-            >
-                <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">
-                    Télécharger le PDF
-                </button>
-            </PDFDownloadLink>
+ 
 
             {/* Visualiseur PDF pour prévisualiser le document dans le navigateur */}
             <div className="mt-8 w-full max-w-4xl mx-auto">

@@ -1,4 +1,6 @@
 'use client'
+'use client'
+'use client'
 import { Page, Text, View, Document, StyleSheet, PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
 
 // Créer un document PDF
@@ -34,7 +36,7 @@ const MyDocument = () => (
 );
 
 // Composant principal avec Tailwind CSS pour rendre responsive
-export default function MyApp() {
+export default function model1() {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen py-8 bg-gray-100 text-neutral">
             <h1 className="text-2xl font-bold mb-4 text-center">Générer un PDF avec React</h1>

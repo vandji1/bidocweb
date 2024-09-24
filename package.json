@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next server.js",
     "lint": "next lint"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
     "@material/linear-progress": "^14.0.0",
     "@mui/material": "^6.1.1",
     "@react-pdf/renderer": "^4.0.0",
+    "express": "^4.21.0",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.2",
     "next": "14.2.13",
@@ -36,8 +37,8 @@
   },
   "devDependencies": {
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "^18.3.8",
+    "@types/react-dom": "^18.3.0",
     "daisyui": "^4.12.10",
     "eslint": "^8",
     "eslint-config-next": "14.2.13",

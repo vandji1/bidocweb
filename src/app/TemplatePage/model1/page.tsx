@@ -1,7 +1,6 @@
 "use client";
 
-import { Page, Text, View, Document, StyleSheet, PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
-import { useState } from 'react';
+import { Page, Text, View, Document, StyleSheet, PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'; 
 
 // Créer des styles pour le PDF
 const styles = StyleSheet.create({

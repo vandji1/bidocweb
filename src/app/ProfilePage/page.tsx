@@ -26,13 +26,35 @@ const iconMapping: { [key: string]: IconDefinition } = {
   film: faFilm,
 };
 
+interface PersonalInfo {
+  name: string;
+  surname: string;
+  adresse: string;
+  tel: string;
+  mail: string;
+  age?: string; // Optionnel
+  profileImage: string;
+  skills:string
+}
+
 export default function Profile() {
-  const [personalInfo, setPersonalInfo] = useState({
-    profileImage: '',
-    name: 'Votre Nom',
-    surname: 'Prénom',
-    skills: 'Quel travail vous avez besoin ?',
-  });
+  // Load user data from local storage
+  const loadUserData = (): Partial<PersonalInfo> => {
+    if (typeof window !== 'undefined') {
+      const userData = localStorage.getItem('userData');
+      return userData ? JSON.parse(userData) : {}; 
+    }
+    return {}; // Retourne un objet vide si on est côté serveur
+  };
+
+  const [personalInfo, setPersonalInfo] = useState<Partial<PersonalInfo>>(loadUserData());
+  
+  useEffect(() => {
+    if (typeof window !== 'undefined') { 
+      setPersonalInfo(loadUserData()); // Met à jour les informations personnelles
+    }
+  }, []);
+
   const [data, setData] = useState<Person[]>([]); 
  
   const [loading, setLoading] = useState(false); // Loader state 
@@ -87,9 +109,10 @@ export default function Profile() {
         />
         <div>
           <div style={{ display: 'flex', alignItems: 'baseline' }}>
-            <h2 className='font-bold text-xl text-neutral'>{personalInfo.name} {personalInfo.surname}</h2>
+            <h2 className='font-bold text-xl text-neutral'>{personalInfo.name? personalInfo.name: "Votre nom"} {personalInfo.surname? personalInfo.surname : "Prénom"}</h2>
           </div>
-          <p className='font-normal text-sm text-neutral'>{personalInfo.skills}</p>
+          <h2 className='font-light text-sm text-neutral'>{personalInfo.age? personalInfo.age + " ans": "Votre âge"} </h2>
+          <p className='font-normal text-sm text-neutral'>{personalInfo.skills?personalInfo.skills:"Quel travail vous chercher ?"}</p>
         </div>
       </div>
 
@@ -99,7 +122,7 @@ export default function Profile() {
         <div style={{ height: '75%', overflowY: 'scroll' }}>
           {data.map((item) => (
             <Link onClick={() => handleClick()}   href={`/ProfilePage/${item.link}`} key={item.id}>
-              <div className='flex flex-row justify-between p-4 border-b-2 my-4'>
+              <div className='flex flex-row justify-between p-4 border-b-2  my-4'>
                 <div className='flex justify-center'>
                   {renderIcon(item.iconNom)}
                   <span className='mx-4 font-bold text-base text-neutral'>{item.nom}</span>

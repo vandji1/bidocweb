@@ -60,7 +60,7 @@ const Experiences: React.FC = () => {
   
 
   const renderExperience = (experience: Experience, index: number) => (
-    <div key={index} className='text-base-100 bg-neutral p-4 flex flex-row justify-between mb-2'>
+    <div key={index} className='text-base-100 bg-zinc-700 p-4 flex flex-row justify-between mb-2'>
       <div className='text-start'>
         <h3 className='text font-bold'>{experience.Poste} Chez {experience.Entreprise}</h3>
         <p className='text-sm font-normal'>{experience.description}</p>

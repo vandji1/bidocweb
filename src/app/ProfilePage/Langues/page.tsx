@@ -55,7 +55,7 @@ const Languages: React.FC = () => {
   };
 
   const renderLanguage = (language: Language, index: number) => (
-    <div key={index} className='text-base-100 bg-neutral p-4 flex flex-row justify-between mb-2'>
+    <div key={index} className='text-base-100 bg-zinc-700  p-4 flex flex-row justify-between mb-2'>
       <div className='text-start'>
         <h3 className='font-bold'>{language.langue} - {language.niveau}</h3>
       </div>

@@ -60,7 +60,7 @@ export default function EditLoisir({ params }: { params: { id: string } }) {
   };
 
   return (
-    <div className='text-neutral p-10 text-center mb-40'>
+    <div className='text-neutral p-2 text-center mb-40'>
       <Link href={'/ProfilePage/Loisirs'}>
         <Image className='w-8 mb-10' src={retourImage} alt='retour' />
       </Link>

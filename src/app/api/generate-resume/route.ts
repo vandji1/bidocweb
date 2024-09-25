@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import puppeteer from 'puppeteer-core';
 import chrome from 'chrome-aws-lambda';
-
 export async function POST() { 
 
   try {

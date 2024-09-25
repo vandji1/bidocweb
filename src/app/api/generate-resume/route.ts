@@ -3,8 +3,8 @@ import puppeteer from 'puppeteer';
 
 export async function POST(req: Request) {
   try {
-    // Parse the request body and extract the 'id' from the first element
-    const [{ id }] = await req.json();
+    // Parse the request body and extract the 'id'
+    const { id } = await req.json(); // Adjusted to destructure directly
 
     // Launch a Puppeteer browser instance without a graphical interface
     const browser = await puppeteer.launch();

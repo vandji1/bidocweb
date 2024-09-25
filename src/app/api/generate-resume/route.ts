@@ -1,17 +1,16 @@
-// src/app/api/generate-resume/route.ts
 import { NextResponse } from 'next/server';
 import puppeteer from 'puppeteer';
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
-    const { id } = body[0];
+    // Parse the request body and extract the 'id' from the first element
+    const [{ id }] = await req.json();
 
-    // Lance un navigateur Puppeteer sans interface graphique
+    // Launch a Puppeteer browser instance without a graphical interface
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
-    // Charge le contenu HTML avec les styles de Tailwind
+    // Load the HTML content with Tailwind CSS styles
     const content = `
       <html>
       <head>
@@ -29,12 +28,12 @@ export async function POST(req: Request) {
     
     await page.setContent(content);
 
-    // Génère le PDF
+    // Generate the PDF
     const pdf = await page.pdf({ format: 'A4' });
 
     await browser.close();
 
-    // Envoie le PDF en réponse
+    // Send the PDF as a response
     return new NextResponse(pdf, {
       headers: {
         'Content-Type': 'application/pdf',

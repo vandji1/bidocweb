@@ -44,7 +44,7 @@ const Model1 = () => {
                   transformOrigin: "top left",
                   transform: `translate(${position.x}px, ${position.y}px)`,
                 }}
-                onMouseDown={(e) => {
+                onMouseDown={() => {
                   // Add event listeners for drag
                   document.addEventListener("mousemove", handleDrag);
                   document.addEventListener("mouseup", () => {

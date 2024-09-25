@@ -4,7 +4,7 @@ export const useDownloadPdf = () => {
   const [isLoading, setIsLoading] = useState(false); 
 
   const apiUrl = '/api/generate-resume'; // Chemin absolu vers votre API
-  console.log("Fetching from URL:", apiUrl);
+ 
 
   const handleDownload = async () => {
     setIsLoading(true);

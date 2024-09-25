@@ -1,16 +1,17 @@
 import { NextResponse } from 'next/server';
-import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer-core';
+import chrome from 'chrome-aws-lambda';
 
-export async function POST(req: Request) {
+export async function POST() { 
+
   try {
-    // Parse the request body and extract the 'id'
-    const { id } = await req.json(); // Adjusted to destructure directly
+    const browser = await puppeteer.launch({
+      args: [...chrome.args, '--no-sandbox', '--disable-setuid-sandbox'],
+      executablePath: await chrome.executablePath,
+      headless: chrome.headless,
+    });
 
-    // Launch a Puppeteer browser instance without a graphical interface
-    const browser = await puppeteer.launch();
     const page = await browser.newPage();
-
-    // Load the HTML content with Tailwind CSS styles
     const content = `
       <html>
       <head>
@@ -20,28 +21,24 @@ export async function POST(req: Request) {
         </style>
       </head>
       <body class="p-6 bg-white">
-        <h1 class="text-3xl font-bold text-blue-600">CV pour l'ID ${id}</h1>
+        <h1 class="text-3xl font-bold text-blue-600">CV pour l'ID</h1>
         <p class="mt-4 text-gray-800">Ceci est un CV généré à partir d'une page HTML.</p>
       </body>
       </html>
     `;
-    
+
     await page.setContent(content);
-
-    // Generate the PDF
-    const pdf = await page.pdf({ format: 'A4' });
-
+    const pdfBuffer = await page.pdf({ format: 'a4' });
     await browser.close();
 
-    // Send the PDF as a response
-    return new NextResponse(pdf, {
+    return new Response(pdfBuffer, {
       headers: {
         'Content-Type': 'application/pdf',
-        'Content-Disposition': 'attachment; filename=resume.pdf',
+        'Content-Disposition': `attachment; filename=resume.pdf`,
       },
     });
   } catch (error) {
     console.error("Error generating PDF:", error);
-    return new NextResponse('Internal Server Error', { status: 500 });
+    return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
   }
 }

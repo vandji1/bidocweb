@@ -3,7 +3,7 @@ import { useState } from "react";
 export const useDownloadPdf = () => {
   const [isLoading, setIsLoading] = useState(false); 
 
-  const apiUrl = '/api/generate-resume'; // Chemin absolu vers votre API
+  const apiUrl = '/api'; // Chemin absolu vers votre API
  
 
   const handleDownload = async () => {

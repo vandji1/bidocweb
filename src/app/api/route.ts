@@ -1,23 +1,19 @@
 import { NextResponse } from 'next/server';
-import chromium from 'chrome-aws-lambda';
+import puppeteer from 'puppeteer';
 
 export async function POST() {
   let browser = null;
 
   try {
-    // Configuration pour chrome-aws-lambda
-    const options = {
-      args: [...chromium.args, '--hide-scrollbars', '--disable-web-security'],
-      defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath,
+    // Lancement du navigateur Puppeteer
+    browser = await puppeteer.launch({
+      args: ['--hide-scrollbars', '--disable-web-security'],
       headless: true,
-    };
+    });
 
-    // Lancer le navigateur
-    browser = await chromium.puppeteer.launch(options);
     const page = await browser.newPage();
 
-    // Contenu HTML pour le PDF
+    // Contenu HTML à inclure dans le PDF
     const content = `
       <html>
       <head>
@@ -33,13 +29,13 @@ export async function POST() {
       </html>
     `;
 
-    // Injection du contenu HTML dans la page
+    // Définir le contenu de la page
     await page.setContent(content);
 
-    // Génération du PDF
-    const pdfBuffer = await page.pdf({ format: 'a4' });
+    // Génération du PDF à partir de la page
+    const pdfBuffer = await page.pdf({ format: 'A4' });
 
-    // Retourner le PDF
+    // Retourner le PDF en réponse
     return new Response(pdfBuffer, {
       headers: {
         'Content-Type': 'application/pdf',
@@ -51,7 +47,7 @@ export async function POST() {
     return NextResponse.json({ message: 'Erreur interne du serveur' }, { status: 500 });
   } finally {
     if (browser) {
-      await browser.close(); // Fermer le navigateur si ouvert
+      await browser.close(); // Fermer le navigateur après utilisation
     }
   }
 }

@@ -3,7 +3,7 @@ import { useState } from "react";
 export const useDownloadPdf = () => {
   const [isLoading, setIsLoading] = useState(false); 
 
-  const apiUrl = '/api'; // Chemin absolu vers votre API
+  const apiUrl = 'https://wintrans.oumistore.com/bidoc/pdf.php'; // Chemin absolu vers votre API
  
 
   const handleDownload = async () => {
@@ -14,7 +14,7 @@ export const useDownloadPdf = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify([{ id: "10" }]), // Ajout du corps de la requête
+        body: JSON.stringify([{ id: "10" }]), // Ajout du corps de la requête 
 
       });
 

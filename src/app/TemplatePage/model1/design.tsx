@@ -15,7 +15,7 @@ export const ResumeComponent = () => {
                     className="font-semibold text-blue-600 hover:underline"
                     href='https://xmsxs.com'
                   >
-                    Vandji nume 
+                    Vandji
                   </a>{" "}
                   by{" "}
                   <span className="capitalize">

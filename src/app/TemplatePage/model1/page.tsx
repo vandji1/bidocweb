@@ -23,9 +23,9 @@ const Model1 = () => {
         maxScale={2}
         centerOnInit={true}
         minScale={0.2}
-        initialScale={0.5}
-        limitToBounds={false}
-        smooth={false}
+        initialScale={0.4}
+        limitToBounds={true}
+        smooth={true}
       >
         {(toolTip) => (
           <>
